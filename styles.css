@@ -1,0 +1,282 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    background-color: #f4f4f9;
+}
+
+
+/* Sidebar */
+.sidebar {
+    width: 70px;
+    background-color: #333;
+    color: white;
+    height: 100vh;
+    transition: width 0.3s ease-in-out;
+    position: relative;
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    background-color: #444;
+}
+
+.sidebar-header h2 {
+    font-size: 1.2em;
+    display: flex;
+    overflow: hidden;
+    margin: 0px 10px;
+}
+
+.sidebar-header h2 i {
+    margin-right: 5px;
+}
+
+
+.toggle-btn {
+    background: #f4f4f9;
+    border: none;
+    color: #333333;
+    cursor: pointer;
+    font-size: 1.2em;
+    position: absolute;
+    right: -15px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.toggle-btn-mob {
+    display: none;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 10px;
+}
+
+.sidebar-menu li {
+    margin: 20px 15px;
+    overflow: hidden;
+}
+
+.sidebar-menu a {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1em;
+}
+
+.sidebar-menu a:hover {
+    color: #ff5733;
+}
+
+/* Sidebar Collapsed */
+.sidebar.collapsed {
+    width: 250px;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    padding: 15px 25px;
+    transition: margin-left 0.3s ease-in-out;
+
+}
+
+header {
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.dashboard-widgets {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 1rem;
+}
+
+.widget {
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    font-size: 1.1em;
+}
+
+.tab-container {
+    width: 100%;
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.tabs {
+    display: flex;
+    border-bottom: 2px solid #ccc;
+}
+
+.tab {
+    flex: 1;
+    padding: 10px;
+    text-align: center;
+    background: #f9f9f9;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.tab.active {
+    background: #007BFF;
+    color: white;
+    font-weight: bold;
+}
+
+.tab:hover {
+    background: #e0e0e0;
+}
+
+.tab-content {
+    padding: 20px;
+}
+
+.tab-pane {
+    display: none;
+}
+
+.tab-pane.active {
+    display: grid;
+}
+
+.responsive-table {
+    width: 100%;
+    overflow: auto;
+}
+
+.responsive-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.responsive-table th,
+.responsive-table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.responsive-table th {
+    background-color: #007BFF;
+    color: white;
+}
+
+.responsive-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.toggle-tab{
+    display: none;
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .dashboard-widgets {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .sidebar {
+        z-index: 10;
+        position: absolute;
+        width: 0px;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+    }
+
+    .main-content {
+        margin-left: 0;
+    }
+
+    .sidebar.collapsed {
+        width: 230px;
+    }
+
+    .toggle-btn {
+        display: none;
+    }
+
+    .toggle-btn-mob {
+        display: block;
+        background: #f4f4f9;
+        border: none;
+        color: #333333;
+        cursor: pointer;
+        font-size: 1.2em;
+        width: 30px;
+        height: 30px;
+    }
+
+    .tabs {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        right: 0;
+        top: 0;
+        width: 0px;
+        transition: background 0.3s;
+    }
+    .tab-btn-open{
+        width: 230px;
+        transition: background 0.3s;
+    }
+    .toggle-tab{
+        display:block;
+        background: transparent;
+        width: 32px;
+        height: 32px;
+        border: none;
+        padding: 0;
+    }
+}
+
+@media (max-width: 568px) {
+    .dashboard-widgets {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .sidebar {
+        position: absolute;
+        z-index: 10;
+    }
+
+    .main-content {
+        margin-left: 0;
+    }
+
+    .sidebar.collapsed {
+        width: 0;
+    }
+}
